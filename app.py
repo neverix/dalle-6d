@@ -31,7 +31,7 @@ def main():
     midas = MidasDepth()
     interface = gr.Interface(fn=lambda x: [Image.fromarray(midas.get_depth(x[0]).astype("uint8")), ""], inputs=[
         gr.inputs.Image(),
-        gr.inputs.Text()
+        gr.inputs.Textbox()
     ], outputs=[
         gr.outputs.Image(),
         gr.outputs.Video()
