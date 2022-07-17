@@ -14,7 +14,7 @@ class MidasDepth(object):
         if not isinstance(image, np.ndarray):
             image = np.asarray(image)
         if (image > 1).any():
-            image /= 255.
+            image = image.astype("float64") / 255.
         with torch.inference_mode():
             batch = self.transform(image[..., :3]).to(self.device)
             prediction = self.midas(batch)
