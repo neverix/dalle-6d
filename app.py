@@ -29,8 +29,8 @@ class MidasDepth(object):
 
 def main():
     midas = MidasDepth()
-    interface = gr.Interface(fn=lambda x, *t: [Image.fromarray(midas.get_depth(x[0]).astype("uint8")), ""], inputs=[
-        gr.inputs.Image(),
+    interface = gr.Interface(fn=lambda x, *t: [Image.fromarray(midas.get_depth(x).astype("uint8")), None], inputs=[
+        gr.inputs.Image(label="src", type="numpy"),
         gr.inputs.Number(label="tx", default=0.0),
         gr.inputs.Number(label="ty", default=0.0),
         gr.inputs.Number(label="tz", default=0.0),
@@ -38,7 +38,7 @@ def main():
         gr.inputs.Number(label="ry", default=0.0),
         gr.inputs.Number(label="rz", default=0.0)
     ], outputs=[
-        gr.outputs.Image(),
+        gr.outputs.Image(type="numpy"),
         gr.outputs.Video()
     ], title="DALL·E 6D", description="Lift DALL·E 2 (or any other model) into 3D!")
     interface.launch()
