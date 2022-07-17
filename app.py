@@ -29,9 +29,14 @@ class MidasDepth(object):
 
 def main():
     midas = MidasDepth()
-    interface = gr.Interface(fn=lambda x: [Image.fromarray(midas.get_depth(x[0]).astype("uint8")), ""], inputs=[
+    interface = gr.Interface(fn=lambda x, *t: [Image.fromarray(midas.get_depth(x[0]).astype("uint8")), ""], inputs=[
         gr.inputs.Image(),
-        gr.inputs.Textbox()
+        gr.inputs.Number(label="tx", default=0.0),
+        gr.inputs.Number(label="ty", default=0.0),
+        gr.inputs.Number(label="tz", default=0.0),
+        gr.inputs.Number(label="rx", default=0.0),
+        gr.inputs.Number(label="ry", default=0.0),
+        gr.inputs.Number(label="rz", default=0.0)
     ], outputs=[
         gr.outputs.Image(),
         gr.outputs.Video()
