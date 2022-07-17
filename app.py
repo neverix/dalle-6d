@@ -29,7 +29,7 @@ class MidasDepth(object):
 
 def main():
     midas = MidasDepth()
-    interface = gr.Interface(inputs=[
+    interface = gr.Interface(fn=lambda x: [Image.fromarray(midas.get_depth(x[0]).astype("uint8")), ""], inputs=[
         gr.inputs.Image(),
         gr.inputs.Text()
     ], outputs=[
