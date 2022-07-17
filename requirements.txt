@@ -1,4 +1,6 @@
+-f https://dl.fbaipublicfiles.com/pytorch3d/packaging/wheels/py38_cu113_pyt1110/download.html
 pytorch3d==0.6.2
 transformers==4.10.3
 torch==1.11.0
+pyrender
 torchvision==0.12.0
