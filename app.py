@@ -92,6 +92,7 @@ def args_to_mat(tx, ty, tz, rx, ry, rz):
 
 
 def render(mesh, mat):
+    mesh = pyrender.mesh.Mesh.from_trimesh(mesh)
     scene = pyrender.Scene(ambient_light=np.array([1.0, 1.0, 1.0]))
     camera = pyrender.PerspectiveCamera(yfov=np.pi / 2, aspectRatio=1.0)
     scene.add(camera, pose=mat)
