@@ -109,7 +109,7 @@ def render(mesh, mat):
 
 
 def main():
-    # os.environ["PYOPENGL_PLATFORM"] = "osmesa"
+    os.environ["PYOPENGL_PLATFORM"] = "egl"  # "osmesa"
 
     midas = MidasDepth()
     def fn(pic, *args):
