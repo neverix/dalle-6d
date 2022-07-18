@@ -102,14 +102,12 @@ def render(mesh, mat):
     mask = d == 0
     rgb = rgb.copy()
     rgb[mask] = 0
-    res = Image.fromarray(np.concatenate((rgb,
-                                          ((mask[..., np.newaxis]) == 0)
-                                          .astype(np.uint8) * 255), axis=-1))
+    res = Image.fromarray(np.concatenate((rgb, ((mask[..., np.newaxis]) == 0).astype(np.uint8) * 255), axis=-1))
     return res
 
 
 def main():
-    os.environ["PYOPENGL_PLATFORM"] = "osmesa"
+    # os.environ["PYOPENGL_PLATFORM"] = "osmesa"
 
     midas = MidasDepth()
     def fn(pic, *args):
