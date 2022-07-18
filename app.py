@@ -130,9 +130,8 @@ def main():
         gr.outputs.Image(type="numpy", label="result"),
         gr.outputs.Image(type="numpy", label="depth"),
         gr.outputs.Video(label="interpolated")
-    ])
-    gr.TabbedInterface([interface], ["Warp 3D images"],
-                       title="DALL·E 6D", description="Lift DALL·E 2 (or any other model) into 3D!").launch()
+    ], title="DALL·E 6D", description="Lift DALL·E 2 (or any other model) into 3D!")
+    gr.TabbedInterface([interface], ["Warp 3D images"]).launch()
 
 
 if __name__ == '__main__':
