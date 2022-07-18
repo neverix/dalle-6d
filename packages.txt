@@ -1,1 +1,3 @@
 mesa-utils
+libglfw3-dev
+libgles2-mesa-dev
