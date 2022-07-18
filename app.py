@@ -86,7 +86,7 @@ def make_mesh(pic, depth, pick_edges):
 
 def args_to_mat(tx, ty, tz, rx, ry, rz):
     mat = np.eye(4)
-    mat[:3, :3] = scipy.spatial.Rotation.from_euler("XYZ", (rx, ry, rz)).as_matrix()
+    mat[:3, :3] = scipy.spatial.transform.Rotation.from_euler("XYZ", (rx, ry, rz)).as_matrix()
     mat[:3, 3] = tx, ty, tz
     return mat
 
@@ -126,11 +126,11 @@ def main():
         gr.inputs.Number(label="ry", default=0.0),
         gr.inputs.Number(label="rz", default=0.0)
     ], outputs=[
-        gr.outputs.Image(type="numpy"),
-        gr.outputs.Image(type="numpy"),
-        gr.outputs.Video()
+        gr.outputs.Image(type="numpy", label="result"),
+        gr.outputs.Image(type="numpy", label="depth"),
+        gr.outputs.Video(label="interpolated")
     ], title="DALL·E 6D", description="Lift DALL·E 2 (or any other model) into 3D!")
-    interface.launch()
+    gr.TabbedInterface([interface], ["Warp 3D images"]).launch()
 
 
 if __name__ == '__main__':
