@@ -92,7 +92,7 @@ def args_to_mat(tx, ty, tz, rx, ry, rz):
 
 
 def render(mesh, mat):
-    mesh = pyrender.mesh.Mesh.from_trimesh(mesh)
+    mesh = pyrender.mesh.Mesh.from_trimesh(mesh, smooth=False)
     scene = pyrender.Scene(ambient_light=np.array([1.0, 1.0, 1.0]))
     camera = pyrender.PerspectiveCamera(yfov=np.pi / 2, aspectRatio=1.0)
     scene.add(camera, pose=mat)
@@ -130,8 +130,9 @@ def main():
         gr.outputs.Image(type="numpy", label="result"),
         gr.outputs.Image(type="numpy", label="depth"),
         gr.outputs.Video(label="interpolated")
-    ], title="DALL·E 6D", description="Lift DALL·E 2 (or any other model) into 3D!")
-    gr.TabbedInterface([interface], ["Warp 3D images"]).launch()
+    ])
+    gr.TabbedInterface([interface], ["Warp 3D images"],
+                       title="DALL·E 6D", description="Lift DALL·E 2 (or any other model) into 3D!").launch()
 
 
 if __name__ == '__main__':
