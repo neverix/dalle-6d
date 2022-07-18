@@ -6,4 +6,4 @@ pyrender
 torchvision==0.12.0
 timm==0.6.5
 opencv-python==4.4.0.44
-git+https://github.com/mmatl/pyopengl.git
+# git+https://github.com/mmatl/pyopengl.git
